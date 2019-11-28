@@ -28,8 +28,8 @@ public class UpdateUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-            User user = this.users.get(Integer.valueOf(req.getParameter("id")));
-            user.setName(req.getParameter("name"));
+        User user = this.users.get(Integer.valueOf(req.getParameter("id")));
+        user.setName(req.getParameter("name"));
 
         resp.sendRedirect(req.getContextPath() + "/");
     }
