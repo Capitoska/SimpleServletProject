@@ -3,7 +3,6 @@ package by.kosya.servlet;
 import by.kosya.dao.UserHikariDAO;
 import by.kosya.model.User;
 
-import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
