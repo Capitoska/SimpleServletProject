@@ -31,6 +31,9 @@ public class Authorization extends HttpServlet {
             session.setAttribute("login", user.getLogin());
             session.setAttribute("password", user.getPassword());
             session.setAttribute("role",user.getRole());
+            System.out.println("Успешно авторизован");
+            // TODO работаю здесь
+            req.getRequestDispatcher( "/WEB-INF/view/index.jsp").forward(req,resp);
         } else {
             req.setAttribute("answer","Ошибка ввода! Перепроверьте ваш логин и пароль!");
             doGet(req, resp);

@@ -1,5 +1,6 @@
 package by.kosya.dao;
 
+import by.kosya.model.Role;
 import by.kosya.model.User;
 import lombok.SneakyThrows;
 
@@ -40,7 +41,7 @@ public class UserHikariDAO {
     @SneakyThrows
     public static User getById(int id) {
         String SQL_QUERY = "select * from users where id =(?)";
-        User user = null;
+        User user = new User();
         try (Connection connection = HikariDatabaseConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY);
             preparedStatement.setInt(1, id);
@@ -53,12 +54,13 @@ public class UserHikariDAO {
     @SneakyThrows
     public static User getByLoginAndPassword(String login, String password) {
         String SQL_QUERY = "select * from users where login = (?) and password = (?)";
-        User user = null;
+        User user = new User();
         try (Connection connection = HikariDatabaseConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY);
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
             userFilling(user, resultSet);
         }
 
@@ -67,11 +69,12 @@ public class UserHikariDAO {
 
     @SneakyThrows
     private static void userFilling(User user, ResultSet resultSet) {
-        user.setId(resultSet.getInt("id"));
         user.setName(resultSet.getString("name"));
         user.setLogin(resultSet.getString("login"));
         user.setPassword(resultSet.getString("password"));
         user.setPhone(resultSet.getString("phone"));
+        user.setRole(Role.getById(Role.values(),resultSet.getInt("role_id")));
+        //user.setRole((resultSet.getInt("role_id"));
     }
 
     @SneakyThrows
