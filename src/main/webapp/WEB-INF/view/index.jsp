@@ -26,6 +26,11 @@
             <input type="submit" value="Зарегистрироваться"><br>
         </form>
 
+        <form method="get" action="<c:url value='/home-page'/>">
+            <input type="submit" value="Домашняя страница"><br>
+        </form>
+
+
     </div>
 </div>
 

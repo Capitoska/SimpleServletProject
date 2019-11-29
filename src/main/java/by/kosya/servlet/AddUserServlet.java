@@ -20,7 +20,7 @@ public class AddUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         System.err.println("Работает DoPost сервела AddUserServlet");
-        if(Utils.requestIsValid(req)){
+        if (Utils.requestIsValid(req)) {
             final String name = req.getParameter("name");
             final String age = req.getParameter("age");
             User user = new User();
@@ -28,7 +28,7 @@ public class AddUserServlet extends HttpServlet {
             user.setAge(Integer.valueOf(age));
             user.setId(id);
             user.setName(name);
-            users.put(id,user);
+            users.put(id, user);
         }
 
         resp.sendRedirect(req.getContextPath() + "/");
@@ -38,10 +38,10 @@ public class AddUserServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         final Object users = getServletContext().getAttribute("users");
-        if(users == null || !(users instanceof ConcurrentHashMap)) {
+        if (users == null || !(users instanceof ConcurrentHashMap)) {
             throw new IllegalStateException("Error with initialization users");
         } else {
-            this.users=(ConcurrentHashMap<Integer, User>) users;
+            this.users = (ConcurrentHashMap<Integer, User>) users;
         }
         id = new AtomicInteger(2);
     }

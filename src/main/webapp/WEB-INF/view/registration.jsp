@@ -14,16 +14,16 @@
 <body>
 
 
-<h2>Создание нового пользователя</h2><br />
+<h2>Создание нового пользователя</h2><br/>
 
-    <form method="post" action="<c:url value='/registration'/>">
-        <label><input type="text" name="name"></label>Имя<br>
-        <label><input type="text" name="login"></label>Логин<br>
-        <label><input type="text" name="password"></label>Пароль<br>
-        <label><input type="text" name="age"></label>Возраст<br>
-        <label><input type="text" name="phone"></label>Номер<br>
-        <input type="submit" value="Ok" name="Ok"><br>
-    </form>
+<form method="post" action="<c:url value='/registration'/>">
+    <label><input type="text" name="name"></label>Имя<br>
+    <label><input type="text" name="login"></label>Логин<br>
+    <label><input type="text" name="password"></label>Пароль<br>
+    <label><input type="text" name="age"></label>Возраст<br>
+    <label><input type="text" name="phone"></label>Номер<br>
+    <input type="submit" value="Ok" name="Ok"><br>
+</form>
 
 </body>
 </html>

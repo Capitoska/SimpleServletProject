@@ -1,7 +1,5 @@
 package by.kosya.filter;
 
-import com.mysql.cj.Session;
-
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,11 +18,15 @@ public class AuthorizationFilter implements Filter {
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
 
         HttpSession session = httpServletRequest.getSession();
-        System.out.println(session.getAttributeNames());
+        System.out.println("Зашли в фильтр AuthorizationFilter");
+        if (session.getAttribute("login") == null || session.getAttribute("password") == null) {
+            httpServletRequest.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(servletRequest, servletResponse);
+        } else {
+            filterChain.doFilter(servletRequest, servletResponse);
+        }
     }
 
     @Override
     public void destroy() {
-
     }
 }

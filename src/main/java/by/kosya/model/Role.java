@@ -4,14 +4,24 @@ public enum Role {
     USER("user", 1),
     ADMIN("admin", 2);
 
+    public static Role getById(Role[] enums, int id) {
+        for (int i = 0; i < enums.length; i++) {
+            if (enums[i].getId() == id) {
+                return enums[i];
+            }
+        }
+        return null;
+    }
+
 
     public String getDisplay() {
         return display;
     }
 
-    public Integer getId() {
+    public  Integer getId() {
         return id;
     }
+
 
     private String display;
     private Integer id;
