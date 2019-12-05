@@ -14,8 +14,7 @@
     <title>Title</title>
 </head>
 <body>
-HELLO ADMIN
-
+Привет Администратор!
 <form method="get" action="<c:url value='/logout'/>">
     <input type="submit" value="Выйти с аккаунта"><br>
 </form>

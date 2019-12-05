@@ -74,7 +74,6 @@ public class UserHikariDAO {
         user.setPassword(resultSet.getString("password"));
         user.setPhone(resultSet.getString("phone"));
         user.setRole(Role.getById(Role.values(),resultSet.getInt("role_id")));
-        //user.setRole((resultSet.getInt("role_id"));
     }
 
     @SneakyThrows
